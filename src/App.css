@@ -1,22 +1,212 @@
-.App {
-  text-align: center;
+.nav-colors {
+    background-color: rgb(25, 25, 100);
+    color: whitesmoke;
+    min-height: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
+.nav-colors img {
+    height: 2.5rem;
+    width: 3rem;
+    margin-top: 0.2%;
+    align-self: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-colors a,
+p,
+span,
+h1 {
+    font-weight: 2rem;
+    color: whitesmoke;
 }
 
-.App-link {
-  color: #09d3ac;
+.nav-colors i {
+    font-size: 2rem;
+    margin: 1%;
+    color: whitesmoke;
+}
+
+.sidenav {
+    background-color: rgb(237, 227, 242);
+}
+
+.sidenav-item {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin: 5%;
+}
+
+.sidenav-item i {
+    font-size: 2rem;
+    color: blueviolet;
+}
+
+.sidenav-item input::placeholder {
+    color: blueviolet;
+    font-family: "Lato" sans-serif;
+}
+
+.sidenav-item span {
+    color: blueviolet;
+    font-family: "Lato", sans-serif;
+}
+
+.searchbar {
+    display: grid;
+    grid-template-columns: 15fr 1fr;
+    margin: 2%;
+    margin-bottom: 0;
+}
+
+.searchbar i {
+    font-size: 1.75rem;
+    color: blueviolet;
+}
+
+.search {
+    height: 2rem;
+}
+
+.search:focus {
+    border: 2px coral;
+    border-style: outset;
+}
+
+.suggestions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2%;
+    margin-top: 0;
+    padding: 0;
+}
+
+.suggestions h1 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: midnightblue;
+}
+
+.popular p {
+    color: black;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.recent p {
+    color: black;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.tile {
+    background-color: midnightblue;
+    display: grid;
+    min-height: 13rem;
+}
+
+.tile .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: coral;
+    margin: 0;
+}
+
+.tile .subtitle {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.tile .line {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.tile .date {
+    font-size: 0.8rem;
+    margin: 0;
+    color: lightslategray;
+}
+
+.tile i {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    font-size: 3.5rem;
+    color: whitesmoke;
+}
+
+.tile button {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    background-color: midnightblue;
+    border: none;
+    height: 3.6rem;
+    width: 3.8rem;
+}
+.tile button:hover {
+    cursor: pointer;
+}
+.tile button:active i {
+    color: coral;
+}
+
+.group-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.group-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.chart-component-container {
+    margin: 20px;
+}
+.chart-component-filters {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: #e5e5e5;
+    border-style: solid;
+    border-color: #0b6b9e;
+}
+.chart-component-filters label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0px 10px;
+    color: black;
+    display: inline-flex;
+}
+.chart-component-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #e5e5e5;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.chart-component-graph {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #664cb6;
+}
+.chart-component-btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.chart-component-btns button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #0b4e8c;
 }

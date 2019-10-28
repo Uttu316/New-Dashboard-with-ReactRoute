@@ -4,7 +4,6 @@ const Chartcomponent = props => {
 	const [filtersRadioenabled, setFiltersRadioenabled] = React.useState(
 		"month-to-date"
 	);
-
 	return (
 		<div className="chart-component-container">
 			<div className="chart-component-filters">
@@ -72,10 +71,7 @@ const Chartcomponent = props => {
 			<div className="chart-component-graph">Coming Soon..</div>
 			<div className="chart-component-btns">
 				<button onClick={() => console.log("compare")}>Compare</button>
-				<button
-					onClick={() => console.log("new Indicator")}
-					className="chart-component-btn"
-				>
+				<button onClick={() => console.log("new Indicator")}>
 					New Indicator
 				</button>
 				<button onClick={() => console.log("Analysis")}>

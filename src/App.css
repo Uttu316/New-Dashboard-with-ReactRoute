@@ -177,8 +177,9 @@ h1 {
     font-size: 1.2rem;
     padding: 0px 10px;
     color: black;
-    display: inline-flex;
+    display: inline-block;
 }
+
 .chart-component-title {
     margin-top: 20px;
     margin-bottom: 10px;

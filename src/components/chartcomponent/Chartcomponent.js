@@ -23,7 +23,7 @@ const Chartcomponent = props => {
 								opacity: 1,
 								position: "relative",
 								left: 5,
-								top: 7
+								verticalAlign: "middle"
 							}}
 						/>
 					</label>
@@ -42,7 +42,7 @@ const Chartcomponent = props => {
 								opacity: 1,
 								position: "relative",
 								left: 5,
-								top: 7
+								verticalAlign: "middle"
 							}}
 						/>
 					</label>
@@ -61,7 +61,7 @@ const Chartcomponent = props => {
 								opacity: 1,
 								position: "relative",
 								left: 5,
-								top: 7
+								verticalAlign: "middle"
 							}}
 						/>
 					</label>

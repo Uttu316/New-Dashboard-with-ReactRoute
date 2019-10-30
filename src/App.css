@@ -196,7 +196,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #664cb6;
 }
 .chart-component-btns {
     display: grid;

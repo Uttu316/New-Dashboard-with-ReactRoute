@@ -1,5 +1,5 @@
 import React from "react";
-
+import MainChart from "./MainChart";
 const Chartcomponent = props => {
 	const [filtersRadioenabled, setFiltersRadioenabled] = React.useState(
 		"month-to-date"
@@ -68,7 +68,9 @@ const Chartcomponent = props => {
 				</form>
 			</div>
 			<div className="chart-component-title">New Customers</div>
-			<div className="chart-component-graph">Coming Soon..</div>
+			<div className="chart-component-graph">
+				<MainChart />
+			</div>
 			<div className="chart-component-btns">
 				<button onClick={() => console.log("compare")}>Compare</button>
 				<button onClick={() => console.log("new Indicator")}>

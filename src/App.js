@@ -13,7 +13,16 @@ function App() {
 					<MainPage />
 				</Route>
 				<Route path="/newcustomer">
-					<Chartcomponent />
+					<Chartcomponent currentTile="newcustomer" />
+				</Route>
+				<Route path="/currentbalance">
+					<Chartcomponent currentTile="currentbalance" />
+				</Route>
+				<Route path="/product">
+					<Chartcomponent currentTile="product" />
+				</Route>
+				<Route path="/gdp">
+					<Chartcomponent currentTile="gdp" />
 				</Route>
 			</Fragment>
 		</Router>

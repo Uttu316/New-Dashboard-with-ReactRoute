@@ -210,3 +210,66 @@ h1 {
     font-weight: bold;
     background-color: #0b4e8c;
 }
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 5;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+    position: fixed;
+    background: white;
+    width: 80%;
+    height: 50vh;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.display-block {
+    display: block;
+    border-radius: 5;
+}
+
+.display-none {
+    display: none;
+}
+.modal-main p {
+    color: black;
+    font-size: 1rem;
+}
+
+.newindicator-container {
+    margin: 10px;
+    height: auto;
+}
+.newindicator-list-heading {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: black;
+    display: block;
+}
+.newindicator-list {
+    overflow-y: auto;
+    height: 40vh;
+}
+.newindicator-list-item {
+    background-color: #e5e5e5;
+    padding: 10px;
+}
+.modal-closebtn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #0b4e8c;
+}

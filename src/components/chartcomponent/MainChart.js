@@ -1,25 +1,13 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import * as d3 from "d3";
-import CsvData from "../../data/CsvData.csv";
+
 const MainChart = props => {
-    const [fileImportedData, setfileImportedData] = React.useState([]);
-    const dates = fileImportedData.map(function(eachdate) {
+    const dates = props.csvdata.map(function(eachdate) {
         return eachdate.Date;
     });
-    const newcustomers = fileImportedData.map(function(eachcustomer) {
-        return eachcustomer.NewCustomers;
-    });
-    React.useEffect(() => {
-        d3.csv(CsvData)
-            .then(function(data) {
-                setfileImportedData(data);
-            })
-            .catch(function(err) {
-                throw err;
-            });
-    }, []);
-    function MonthtoDate(a, b) {
+
+    //console.log(props.csvdata, "main");
+    /* function MonthtoDate(a, b) {
         var dateA = new Date(a.date).getMonth();
         var dateB = new Date(b.date).getMonth();
         return dateA > dateB ? 1 : -1;
@@ -34,8 +22,8 @@ const MainChart = props => {
     }
     if (props.currentFilter === "year-to-date") {
         fileImportedData.sort(YeartoDate);
-    }
-    console.log(props.currentFilter, dates);
+    }*/
+    //console.log(props);
     return (
         <React.Fragment>
             <Bar
@@ -43,9 +31,20 @@ const MainChart = props => {
                     labels: dates,
                     datasets: [
                         {
-                            label: "# of Votes",
-                            data: newcustomers,
-                            backgroundColor: "red"
+                            type: "line",
+                            label: "New Customer",
+                            data: props.dataset,
+                            fill: false,
+                            borderColor: "orange",
+                            backgroundColor: "pink"
+                        },
+                        {
+                            type: "bar",
+                            label: " Customer",
+                            data: props.dataset,
+                            fill: false,
+                            borderColor: "green",
+                            backgroundColor: "pink"
                         }
                     ]
                 }}

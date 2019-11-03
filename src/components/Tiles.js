@@ -9,6 +9,7 @@ const Tiles = props => {
             title: "1.2%",
             subtitle: "(%YoY)",
             line1: "Industrial Production",
+            link: "newcustomer",
             line2: "Line 2 of title",
             period: "Jan-19",
             updated: "30-Jan-19",
@@ -18,6 +19,7 @@ const Tiles = props => {
             id: 2,
             title: "5.1%",
             subtitle: "(% of GDP)",
+            link: "currentbalance",
             line1: "Current Account Balance",
             line2: "Line 2 of title",
             period: "15-Jun-19",
@@ -30,6 +32,7 @@ const Tiles = props => {
             subtitle: "(US$ bn)",
             line1: "Population",
             line2: "Line 2 of title",
+            link: "product",
             period: "2QFY19",
             updated: "15-Jun-19",
             exist: true
@@ -40,6 +43,7 @@ const Tiles = props => {
             subtitle: "(Million Tonnes)",
             line1: "GDP Growth",
             line2: "Line 2 of title",
+            link: "gdp",
             period: "FY18",
             updated: "15-Jan-19",
             exist: true
@@ -58,7 +62,7 @@ const Tiles = props => {
         <div className="row">
             <div className="tiles">
                 {data.map(each => (
-                    <Link to="/newcustomer" key={each.id}>
+                    <Link to={`/${each.link}`} key={each.id}>
                         <div className="col l3">
                             <Tile data={each} />
                         </div>

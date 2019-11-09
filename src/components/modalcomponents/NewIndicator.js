@@ -8,7 +8,9 @@ const NewIndiactor = props => {
 			<div className="newindicator-list">
 				{props.list.map(item => {
 					return item !== "Date" ? (
-						<p className="newindicator-list-item">{item}</p>
+						<p className="newindicator-list-item" key={item}>
+							{item}
+						</p>
 					) : null;
 				})}
 			</div>

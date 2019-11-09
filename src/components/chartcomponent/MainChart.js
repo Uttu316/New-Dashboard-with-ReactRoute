@@ -2,38 +2,103 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 const MainChart = props => {
-    const dates = props.csvdata.map(function(eachdate) {
-        return eachdate.Date;
-    });
-
-    //console.log(props.csvdata, "main");
-    /* function MonthtoDate(a, b) {
-        var dateA = new Date(a.date).getMonth();
-        var dateB = new Date(b.date).getMonth();
-        return dateA > dateB ? 1 : -1;
-    }
-    function YeartoDate(a, b) {
-        var dateA = new Date(a.date).getYear();
-        var dateB = new Date(b.date).getYear();
-        return dateA > dateB ? 1 : -1;
-    }
+    let Dates = [];
+    let Datasets = [];
     if (props.currentFilter === "month-to-date") {
-        fileImportedData.sort(MonthtoDate);
+        Dates = props.MonthtoDatedata.map(function(eachdate) {
+            return eachdate.Date;
+        });
+
+        switch (props.currentTile) {
+            case "newcustomer":
+                Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                    return eachdate.NewCustomers;
+                });
+                break;
+            case "currentbalance":
+                Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                    return eachdate.AverageCABalance;
+                });
+                break;
+            case "product":
+                Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                    return eachdate.ProductsSold;
+                });
+                break;
+            case "gdp":
+                Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                    return eachdate.NewCreditCards;
+                });
+                break;
+        }
+    } else if (props.currentFilter === "quater-to-date") {
+        Dates = props.QuatertoDatedata.map(function(eachdate) {
+            return eachdate.Date;
+        });
+
+        switch (props.currentTile) {
+            case "newcustomer":
+                Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                    return eachdate.NewCustomers;
+                });
+                break;
+            case "currentbalance":
+                Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                    return eachdate.AverageCABalance;
+                });
+                break;
+            case "product":
+                Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                    return eachdate.ProductsSold;
+                });
+                break;
+            case "gdp":
+                Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                    return eachdate.NewCreditCards;
+                });
+                break;
+        }
+    } else if (props.currentFilter === "year-to-date") {
+        Dates = props.YeartoDatedata.map(function(eachdate) {
+            return eachdate.Date;
+        });
+
+        switch (props.currentTile) {
+            case "newcustomer":
+                Datasets = props.YeartoDatedata.map(function(eachdate) {
+                    return eachdate.NewCustomers;
+                });
+                break;
+            case "currentbalance":
+                Datasets = props.YeartoDatedata.map(function(eachdate) {
+                    return eachdate.AverageCABalance;
+                });
+                break;
+            case "product":
+                Datasets = props.YeartoDatedata.map(function(eachdate) {
+                    return eachdate.ProductsSold;
+                });
+                break;
+            case "gdp":
+                Datasets = props.YeartoDatedata.map(function(eachdate) {
+                    return eachdate.NewCreditCards;
+                });
+                break;
+        }
     }
-    if (props.currentFilter === "year-to-date") {
-        fileImportedData.sort(YeartoDate);
-    }*/
-    //console.log(props);
+
+    //console.log(Datasets);
+
     return (
         <React.Fragment>
             <Bar
                 data={{
-                    labels: dates,
+                    labels: Dates,
                     datasets: [
                         {
                             type: "line",
                             label: "New Customer",
-                            data: props.dataset,
+                            data: Datasets,
                             fill: false,
                             borderColor: "orange",
                             backgroundColor: "pink"
@@ -41,7 +106,7 @@ const MainChart = props => {
                         {
                             type: "bar",
                             label: " Customer",
-                            data: props.dataset,
+                            data: Datasets,
                             fill: false,
                             borderColor: "green",
                             backgroundColor: "pink"
@@ -50,20 +115,6 @@ const MainChart = props => {
                 }}
                 options={{
                     maintainAspectRatio: false
-                    /*scales: {
-                        xAxes: [
-                            {
-                                format: "time",
-                                time: {
-                                    parser: "MM/DD/YYYY",
-                                    unit: "month",
-                                    displayFormats: {
-                                        month: "MMM"
-                                    }
-                                }
-                            }
-                        ]
-                    }*/
                 }}
             />
         </React.Fragment>

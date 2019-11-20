@@ -12,14 +12,14 @@ function App() {
 					<Navbar />
 					<MainPage />
 				</Route>
-				<Route path="/newcustomer">
-					<Chartcomponent currentTile="newcustomer" />
+				<Route path="/newcustomers">
+					<Chartcomponent currentTile="newcustomers" />
 				</Route>
 				<Route path="/currentbalance">
 					<Chartcomponent currentTile="currentbalance" />
 				</Route>
-				<Route path="/product">
-					<Chartcomponent currentTile="product" />
+				<Route path="/productssold">
+					<Chartcomponent currentTile="productssold" />
 				</Route>
 				<Route path="/gdp">
 					<Chartcomponent currentTile="gdp" />

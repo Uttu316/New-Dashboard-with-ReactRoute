@@ -1,9 +1,10 @@
 import React from "react";
 import Tile from "./Tile";
-
+//import * as d3 from "d3";
+//import MonthtoDate from "../data/Book1.csv";
 import { Link } from "react-router-dom";
 const Tiles = props => {
-    const data = [
+    /*const data = [
         {
             id: 1,
             title: "1.2%",
@@ -57,14 +58,49 @@ const Tiles = props => {
         { id: 11 },
         { id: 12 }
     ];
-
+    const [MonthtoDatedata, ImportMonthtoDate] = React.useState([]);
+    const [columns,setcolumns]= React.useState([]);
+    const [links,setLinks]  = React.useState([])
+    function replaceKeys(object) {
+        Object.keys(object).forEach(function(key) {
+            var newKey = key.replace(/\s+/g, "");
+            if (object[key] && typeof object[key] === "object") {
+                replaceKeys(object[key]);
+            }
+            if (key !== newKey) {
+                object[newKey] = object[key];
+                delete object[key];
+            }
+        });
+        return object;
+    }
+    React.useEffect(() => {
+        d3.csv(MonthtoDate)
+            .then(function(data) {
+                ImportMonthtoDate(replaceKeys(data));
+                
+            })
+            .catch(function(err) {
+                throw err;
+            });
+        
+    }, []);
+    React.useEffect(()=>{
+        
+        if(MonthtoDatedata.columns){
+            const extractcolumns  = (MonthtoDatedata.columns).slice(1)
+            setcolumns(extractcolumns)
+            const extractlinks  = ((MonthtoDatedata.columns).slice(1)).map(str => (str.replace(/\s/g, '').toLowerCase()))
+            setLinks(extractlinks)
+        }
+    },[MonthtoDatedata])*/}
     return (
         <div className="row">
             <div className="tiles">
-                {data.map(each => (
-                    <Link to={`/${each.link}`} key={each.id}>
+                {columns.map((each,index) => (
+                    <Link to={`/${links[index]}`} key={index}>
                         <div className="col l3">
-                            <Tile data={each} />
+                            <Tile title={each} link={links[index]} data={MonthtoDatedata} />
                         </div>
                     </Link>
                 ))}

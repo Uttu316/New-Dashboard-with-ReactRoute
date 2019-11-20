@@ -10,7 +10,7 @@ const MainChart = props => {
         });
 
         switch (props.currentTile) {
-            case "newcustomer":
+            case "newcustomers":
                 Datasets = props.MonthtoDatedata.map(function(eachdate) {
                     return eachdate.NewCustomers;
                 });
@@ -20,7 +20,7 @@ const MainChart = props => {
                     return eachdate.AverageCABalance;
                 });
                 break;
-            case "product":
+            case "productssold":
                 Datasets = props.MonthtoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });
@@ -37,7 +37,7 @@ const MainChart = props => {
         });
 
         switch (props.currentTile) {
-            case "newcustomer":
+            case "newcustomers":
                 Datasets = props.QuatertoDatedata.map(function(eachdate) {
                     return eachdate.NewCustomers;
                 });
@@ -47,7 +47,7 @@ const MainChart = props => {
                     return eachdate.AverageCABalance;
                 });
                 break;
-            case "product":
+            case "productssold":
                 Datasets = props.QuatertoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });
@@ -64,7 +64,7 @@ const MainChart = props => {
         });
 
         switch (props.currentTile) {
-            case "newcustomer":
+            case "newcustomers":
                 Datasets = props.YeartoDatedata.map(function(eachdate) {
                     return eachdate.NewCustomers;
                 });
@@ -74,7 +74,7 @@ const MainChart = props => {
                     return eachdate.AverageCABalance;
                 });
                 break;
-            case "product":
+            case "productssold":
                 Datasets = props.YeartoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });

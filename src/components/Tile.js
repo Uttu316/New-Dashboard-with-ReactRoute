@@ -1,18 +1,20 @@
 import React,{Fragment} from 'react'
 
-const Tile = ({data}) => {
-
-
+const Tile = ({data,title}) => {
+   
     return (
         <Fragment>
-            {data.exist ? (
+
+            {title ? 
+             
+                (
             <div className="card-panel tile">
-                    <h1 className="title">{data.title}</h1>
-                    <p className="subtitle">{data.subtitle}</p>
-                    <p className="line">{data.line1}</p>
-                    <p className="line">{data.line2}</p>
-                    <p className="subtitle">Period: {data.period}</p>
-                    <p className="date">Last Updated: {data.updated}</p>
+                    <h1 className="title">{title}</h1>
+                    <p className="subtitle">{data[data.length -1].object}</p>
+                                       {/* <p className="line">{data.line1}</p>
+                                        <p className="line">{data.line2}</p>
+                                        <p className="subtitle">Period: {data.period}</p>
+                                        <p className="date">Last Updated: {data.updated}</p>*/}
             </div>) : (
                 <div className="card-panel tile">
                     <button type="button">

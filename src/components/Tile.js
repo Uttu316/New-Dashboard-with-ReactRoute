@@ -1,30 +1,25 @@
-import React,{Fragment} from 'react'
+import React, { Fragment } from "react";
 
-const Tile = ({data,title}) => {
-   
+const Tile = ({ data }) => {
+    console.log(data);
     return (
         <Fragment>
-
-            {title ? 
-             
-                (
-            <div className="card-panel tile">
-                    <h1 className="title">{title}</h1>
-                    <p className="subtitle">{data[data.length -1].object}</p>
-                                       {/* <p className="line">{data.line1}</p>
-                                        <p className="line">{data.line2}</p>
-                                        <p className="subtitle">Period: {data.period}</p>
-                                        <p className="date">Last Updated: {data.updated}</p>*/}
-            </div>) : (
+            {data ? (
+                <div className="card-panel tile">
+                    <h1 className="title">{data.title}</h1>
+                    <p className="line">{data.date}</p>
+                    <p className="subtitle">Current value: {data.currvalue}</p>
+                    <p className="date">Last updated value: {data.prevvalue}</p>
+                </div>
+            ) : (
                 <div className="card-panel tile">
                     <button type="button">
                         <i className="fas fa-plus-square"></i>
                     </button>
-                </div>            
+                </div>
             )}
         </Fragment>
-    )
-}
+    );
+};
 
-
-export default Tile
+export default Tile;

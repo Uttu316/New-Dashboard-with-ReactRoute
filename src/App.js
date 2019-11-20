@@ -4,7 +4,7 @@ import "./App.css";
 import MainPage from "./components/MainPage";
 import Navbar from "./components/Navbar";
 import Chartcomponent from "./components/chartcomponent/Chartcomponent";
-function App() {
+const App = () => {
 	return (
 		<Router basename="/">
 			<Fragment>
@@ -15,18 +15,18 @@ function App() {
 				<Route path="/newcustomers">
 					<Chartcomponent currentTile="newcustomers" />
 				</Route>
-				<Route path="/currentbalance">
-					<Chartcomponent currentTile="currentbalance" />
+				<Route path="/ppcincremental">
+					<Chartcomponent currentTile="ppcincremental" />
 				</Route>
-				<Route path="/productssold">
-					<Chartcomponent currentTile="productssold" />
+				<Route path="/productsold">
+					<Chartcomponent currentTile="productsold" />
 				</Route>
-				<Route path="/gdp">
-					<Chartcomponent currentTile="gdp" />
+				<Route path="/totalcustomers">
+					<Chartcomponent currentTile="totalcustomers" />
 				</Route>
 			</Fragment>
 		</Router>
 	);
-}
+};
 
 export default App;

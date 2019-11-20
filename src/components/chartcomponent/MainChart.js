@@ -15,19 +15,19 @@ const MainChart = props => {
                     return eachdate.NewCustomers;
                 });
                 break;
-            case "currentbalance":
+            case "ppcincremental":
                 Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.AverageCABalance;
+                    return eachdate.PPCIncremental;
                 });
                 break;
-            case "productssold":
+            case "productsold":
                 Datasets = props.MonthtoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });
                 break;
-            case "gdp":
+            case "totalcustomers":
                 Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.NewCreditCards;
+                    return eachdate.TotalCustomers;
                 });
                 break;
         }
@@ -42,19 +42,19 @@ const MainChart = props => {
                     return eachdate.NewCustomers;
                 });
                 break;
-            case "currentbalance":
+            case "ppcincremental":
                 Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.AverageCABalance;
+                    return eachdate.PPCIncremental;
                 });
                 break;
-            case "productssold":
+            case "productsold":
                 Datasets = props.QuatertoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });
                 break;
-            case "gdp":
+            case "totalcustomers":
                 Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.NewCreditCards;
+                    return eachdate.TotalCustomers;
                 });
                 break;
         }
@@ -69,19 +69,19 @@ const MainChart = props => {
                     return eachdate.NewCustomers;
                 });
                 break;
-            case "currentbalance":
+            case "ppcincremental":
                 Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.AverageCABalance;
+                    return eachdate.PPCIncremental;
                 });
                 break;
-            case "productssold":
+            case "productsold":
                 Datasets = props.YeartoDatedata.map(function(eachdate) {
                     return eachdate.ProductsSold;
                 });
                 break;
-            case "gdp":
+            case "totalcustomers":
                 Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.NewCreditCards;
+                    return eachdate.TotalCustomers;
                 });
                 break;
         }

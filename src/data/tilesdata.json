@@ -1,0 +1,30 @@
+[
+	{
+		"title": "New Customer",
+		"link": "newcustomers",
+		"date": "28-09-19",
+		"currvalue": 984,
+		"prevvalue": 234
+	},
+	{
+		"title": "Product Sold",
+		"link": "productsold",
+		"date": "28-08-19",
+		"currvalue": 914,
+		"prevvalue": 234
+	},
+	{
+		"title": "PPC Incremental",
+		"link": "ppcincremental",
+		"date": "28-07-19",
+		"currvalue": 714,
+		"prevvalue": 234
+	},
+	{
+		"title": "Total Customers",
+		"link": "totalcustomers",
+		"date": "28-06-19",
+		"currvalue": 614,
+		"prevvalue": 234
+	}
+]

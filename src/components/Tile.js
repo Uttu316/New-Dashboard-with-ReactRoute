@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 
 const Tile = ({ data }) => {
-    console.log(data);
     return (
         <Fragment>
             {data ? (

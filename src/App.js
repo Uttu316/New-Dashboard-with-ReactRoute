@@ -4,25 +4,105 @@ import "./App.css";
 import MainPage from "./components/MainPage";
 import Navbar from "./components/Navbar";
 import Chartcomponent from "./components/chartcomponent/Chartcomponent";
+import * as d3 from "d3";
+import MonthtoDate from "./data/Book1.csv";
+import QuatertoDate from "./data/Book2.csv";
+import YeartoDate from "./data/Book3.csv";
 const App = () => {
+	const [MonthtoDatedata, ImportMonthtoDate] = React.useState([]);
+	const [QuatertoDatedata, ImportQuatertoDate] = React.useState([]);
+	const [YeartoDatedata, ImportYeartoDate] = React.useState([]);
+	const [filtersRadioenabled, setFiltersRadioenabled] = React.useState(
+		"month-to-date"
+	);
+	function replaceKeys(object) {
+		Object.keys(object).forEach(function(key) {
+			var newKey = key.replace(/\s+/g, "");
+			if (object[key] && typeof object[key] === "object") {
+				replaceKeys(object[key]);
+			}
+			if (key !== newKey) {
+				object[newKey] = object[key];
+				delete object[key];
+			}
+		});
+		return object;
+	}
+	React.useEffect(() => {
+		d3.csv(MonthtoDate)
+			.then(function(data) {
+				ImportMonthtoDate(replaceKeys(data));
+			})
+			.catch(function(err) {
+				throw err;
+			});
+		d3.csv(QuatertoDate)
+			.then(function(data) {
+				ImportQuatertoDate(replaceKeys(data));
+			})
+			.catch(function(err) {
+				throw err;
+			});
+		d3.csv(YeartoDate)
+			.then(function(data) {
+				ImportYeartoDate(replaceKeys(data));
+			})
+			.catch(function(err) {
+				throw err;
+			});
+	}, []);
 	return (
 		<Router basename="/">
 			<Fragment>
 				<Route exact path="/">
 					<Navbar />
-					<MainPage />
+					<MainPage
+						filtersRadioenabled={filtersRadioenabled}
+						setFiltersRadioenabled={setFiltersRadioenabled}
+						MonthtoDatedata={MonthtoDatedata}
+						QuatertoDatedata={QuatertoDatedata}
+						YeartoDatedata={YeartoDatedata}
+					/>
 				</Route>
-				<Route path="/newcustomers">
-					<Chartcomponent currentTile="newcustomers" />
+				<Route exact path="/newcustomers">
+					<Chartcomponent
+						filtersRadioenabled={filtersRadioenabled}
+						setFiltersRadioenabled={setFiltersRadioenabled}
+						MonthtoDatedata={MonthtoDatedata}
+						QuatertoDatedata={QuatertoDatedata}
+						YeartoDatedata={YeartoDatedata}
+						currentTile="newcustomers"
+					/>
 				</Route>
-				<Route path="/ppcincremental">
-					<Chartcomponent currentTile="ppcincremental" />
+				<Route exact path="/ppcincremental">
+					<Chartcomponent
+						filtersRadioenabled={filtersRadioenabled}
+						setFiltersRadioenabled={setFiltersRadioenabled}
+						MonthtoDatedata={MonthtoDatedata}
+						QuatertoDatedata={QuatertoDatedata}
+						YeartoDatedata={YeartoDatedata}
+						currentTile="ppcincremental"
+					/>
 				</Route>
-				<Route path="/productsold">
-					<Chartcomponent currentTile="productsold" />
+				<Route exact path="/productssold">
+					<Chartcomponent
+						filtersRadioenabled={filtersRadioenabled}
+						setFiltersRadioenabled={setFiltersRadioenabled}
+						MonthtoDatedata={MonthtoDatedata}
+						QuatertoDatedata={QuatertoDatedata}
+						YeartoDatedata={YeartoDatedata}
+						currentTile="productssold"
+					/>
 				</Route>
-				<Route path="/totalcustomers">
-					<Chartcomponent currentTile="totalcustomers" />
+				<Route exact path="/totalcustomers">
+					<Chartcomponent
+						filtersRadioenabled={filtersRadioenabled}
+						setFiltersRadioenabled={setFiltersRadioenabled}
+						MonthtoDatedata={MonthtoDatedata}
+						QuatertoDatedata={QuatertoDatedata}
+						YeartoDatedata={YeartoDatedata}
+						currentTile="totalcustomers"
+					/>
 				</Route>
 			</Fragment>
 		</Router>

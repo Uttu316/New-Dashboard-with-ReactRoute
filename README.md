@@ -1,4 +1,3 @@
-Learning:--> https://www.geeksforgeeks.org/sort-an-object-array-by-date-in-javascript/
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -4,86 +4,88 @@ import { Bar } from "react-chartjs-2";
 const MainChart = props => {
     let Dates = [];
     let Datasets = [];
-    if (props.currentFilter === "month-to-date") {
-        Dates = props.MonthtoDatedata.map(function(eachdate) {
-            return eachdate.Date;
-        });
+    if (props.MonthtoDatedata.columns) {
+        if (props.currentFilter === "month-to-date") {
+            Dates = props.MonthtoDatedata.map(function(eachdate) {
+                return eachdate.Date;
+            });
 
-        switch (props.currentTile) {
-            case "newcustomers":
-                Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.NewCustomers;
-                });
-                break;
-            case "ppcincremental":
-                Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.PPCIncremental;
-                });
-                break;
-            case "productsold":
-                Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.ProductsSold;
-                });
-                break;
-            case "totalcustomers":
-                Datasets = props.MonthtoDatedata.map(function(eachdate) {
-                    return eachdate.TotalCustomers;
-                });
-                break;
-        }
-    } else if (props.currentFilter === "quater-to-date") {
-        Dates = props.QuatertoDatedata.map(function(eachdate) {
-            return eachdate.Date;
-        });
+            switch (props.currentTile) {
+                case "newcustomers":
+                    Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                        return eachdate.NewCustomers;
+                    });
+                    break;
+                case "ppcincremental":
+                    Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                        return eachdate.PPCIncremental;
+                    });
+                    break;
+                case "productssold":
+                    Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                        return eachdate.ProductsSold;
+                    });
+                    break;
+                case "totalcustomers":
+                    Datasets = props.MonthtoDatedata.map(function(eachdate) {
+                        return eachdate.TotalCustomers;
+                    });
+                    break;
+            }
+        } else if (props.currentFilter === "quater-to-date") {
+            Dates = props.QuatertoDatedata.map(function(eachdate) {
+                return eachdate.Date;
+            });
 
-        switch (props.currentTile) {
-            case "newcustomers":
-                Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.NewCustomers;
-                });
-                break;
-            case "ppcincremental":
-                Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.PPCIncremental;
-                });
-                break;
-            case "productsold":
-                Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.ProductsSold;
-                });
-                break;
-            case "totalcustomers":
-                Datasets = props.QuatertoDatedata.map(function(eachdate) {
-                    return eachdate.TotalCustomers;
-                });
-                break;
-        }
-    } else if (props.currentFilter === "year-to-date") {
-        Dates = props.YeartoDatedata.map(function(eachdate) {
-            return eachdate.Date;
-        });
+            switch (props.currentTile) {
+                case "newcustomers":
+                    Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                        return eachdate.NewCustomers;
+                    });
+                    break;
+                case "ppcincremental":
+                    Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                        return eachdate.PPCIncremental;
+                    });
+                    break;
+                case "productssold":
+                    Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                        return eachdate.ProductsSold;
+                    });
+                    break;
+                case "totalcustomers":
+                    Datasets = props.QuatertoDatedata.map(function(eachdate) {
+                        return eachdate.TotalCustomers;
+                    });
+                    break;
+            }
+        } else if (props.currentFilter === "year-to-date") {
+            Dates = props.YeartoDatedata.map(function(eachdate) {
+                return eachdate.Date;
+            });
 
-        switch (props.currentTile) {
-            case "newcustomers":
-                Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.NewCustomers;
-                });
-                break;
-            case "ppcincremental":
-                Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.PPCIncremental;
-                });
-                break;
-            case "productsold":
-                Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.ProductsSold;
-                });
-                break;
-            case "totalcustomers":
-                Datasets = props.YeartoDatedata.map(function(eachdate) {
-                    return eachdate.TotalCustomers;
-                });
-                break;
+            switch (props.currentTile) {
+                case "newcustomers":
+                    Datasets = props.YeartoDatedata.map(function(eachdate) {
+                        return eachdate.NewCustomers;
+                    });
+                    break;
+                case "ppcincremental":
+                    Datasets = props.YeartoDatedata.map(function(eachdate) {
+                        return eachdate.PPCIncremental;
+                    });
+                    break;
+                case "productssold":
+                    Datasets = props.YeartoDatedata.map(function(eachdate) {
+                        return eachdate.ProductsSold;
+                    });
+                    break;
+                case "totalcustomers":
+                    Datasets = props.YeartoDatedata.map(function(eachdate) {
+                        return eachdate.TotalCustomers;
+                    });
+                    break;
+            }
         }
     }
 

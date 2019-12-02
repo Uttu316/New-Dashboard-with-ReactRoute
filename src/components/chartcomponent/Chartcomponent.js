@@ -10,12 +10,6 @@ import MonthtoDate from "../../data/Book1.csv";
 import QuatertoDate from "../../data/Book2.csv";
 import YeartoDate from "../../data/Book3.csv";
 const Chartcomponent = props => {
-	const [MonthtoDatedata, ImportMonthtoDate] = React.useState([]);
-	const [QuatertoDatedata, ImportQuatertoDate] = React.useState([]);
-	const [YeartoDatedata, ImportYeartoDate] = React.useState([]);
-	const [filtersRadioenabled, setFiltersRadioenabled] = React.useState(
-		"month-to-date"
-	);
 	const [currentbuttonClicked, setCurrentButtonClicked] = React.useState(
 		null
 	);
@@ -28,42 +22,6 @@ const Chartcomponent = props => {
 		borderColor: "",
 		backgroundColor: ""
 	};
-	function replaceKeys(object) {
-		Object.keys(object).forEach(function(key) {
-			var newKey = key.replace(/\s+/g, "");
-			if (object[key] && typeof object[key] === "object") {
-				replaceKeys(object[key]);
-			}
-			if (key !== newKey) {
-				object[newKey] = object[key];
-				delete object[key];
-			}
-		});
-		return object;
-	}
-	React.useEffect(() => {
-		d3.csv(MonthtoDate)
-			.then(function(data) {
-				ImportMonthtoDate(replaceKeys(data));
-			})
-			.catch(function(err) {
-				throw err;
-			});
-		d3.csv(QuatertoDate)
-			.then(function(data) {
-				ImportQuatertoDate(replaceKeys(data));
-			})
-			.catch(function(err) {
-				throw err;
-			});
-		d3.csv(YeartoDate)
-			.then(function(data) {
-				ImportYeartoDate(replaceKeys(data));
-			})
-			.catch(function(err) {
-				throw err;
-			});
-	}, []);
 
 	return (
 		<div className="chart-component-container">
@@ -75,9 +33,11 @@ const Chartcomponent = props => {
 							type="radio"
 							value="month-to-date"
 							name="date-fromat"
-							checked={filtersRadioenabled === "month-to-date"}
+							checked={
+								props.filtersRadioenabled === "month-to-date"
+							}
 							onChange={e =>
-								setFiltersRadioenabled(e.target.value)
+								props.setFiltersRadioenabled(e.target.value)
 							}
 							style={{
 								pointerEvents: "auto",
@@ -94,9 +54,11 @@ const Chartcomponent = props => {
 							type="radio"
 							value="quater-to-date"
 							name="date-fromat"
-							checked={filtersRadioenabled === "quater-to-date"}
+							checked={
+								props.filtersRadioenabled === "quater-to-date"
+							}
 							onChange={e =>
-								setFiltersRadioenabled(e.target.value)
+								props.setFiltersRadioenabled(e.target.value)
 							}
 							style={{
 								pointerEvents: "auto",
@@ -113,9 +75,11 @@ const Chartcomponent = props => {
 							type="radio"
 							value="year-to-date"
 							name="date-fromat"
-							checked={filtersRadioenabled === "year-to-date"}
+							checked={
+								props.filtersRadioenabled === "year-to-date"
+							}
 							onChange={e =>
-								setFiltersRadioenabled(e.target.value)
+								props.setFiltersRadioenabled(e.target.value)
 							}
 							style={{
 								pointerEvents: "auto",
@@ -131,11 +95,11 @@ const Chartcomponent = props => {
 			<div className="chart-component-title">New Customers</div>
 			<div className="chart-component-graph">
 				<MainChart
-					currentFilter={filtersRadioenabled}
+					currentFilter={props.filtersRadioenabled}
 					currentTile={props.currentTile}
-					MonthtoDatedata={MonthtoDatedata}
-					YeartoDatedata={YeartoDatedata}
-					QuatertoDatedata={QuatertoDatedata}
+					MonthtoDatedata={props.MonthtoDatedata}
+					YeartoDatedata={props.YeartoDatedata}
+					QuatertoDatedata={props.QuatertoDatedata}
 				/>
 			</div>
 			<div className="chart-component-btns">
@@ -175,7 +139,9 @@ const Chartcomponent = props => {
 			{currentbuttonClicked === "newindicator" && (
 				<Modal
 					show={showModal}
-					children={<NewIndicator list={MonthtoDatedata.columns} />}
+					children={
+						<NewIndicator list={props.MonthtoDatedata.columns} />
+					}
 					handleClose={() => setShowModal(!showModal)}
 				/>
 			)}

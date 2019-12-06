@@ -30,7 +30,7 @@ const MainChart = props => {
     }
   }
 
-  console.log(Datasets);
+  //console.log(Datasets);
 
   return (
     <React.Fragment>

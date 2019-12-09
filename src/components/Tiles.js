@@ -94,7 +94,7 @@ const Tiles = props => {
         <div className="row">
             <div className="tiles">
                 {tilesnewdata.map(each => (
-                    <Link to={`/${each.link}`} key={each.title}>
+                    <Link to={`/dashboard/${each.link}`} key={each.title}>
                         <div className="col l3">
                             <Tile data={each} />
                         </div>

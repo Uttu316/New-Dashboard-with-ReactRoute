@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { message } from "antd";
 import { connect } from "react-redux";
 //import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
@@ -114,10 +114,15 @@ class Login extends Component {
     this.state = intialState;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    if (this.props.is_logged_in) {
-      let path = "/";
-      this.props.history.push(path);
-      message.success("You are already logged in");
+    this.login = this.login.bind(this);
+  }
+  async login() {
+    try {
+      await firebase.login(this.state.email, this.state.password);
+      this.props.history.replace("/dashboard");
+    } catch (error) {
+      alert(error.message);
+      this.setState(intialState);
     }
   }
   handleModalOpen = () => {
@@ -134,14 +139,15 @@ class Login extends Component {
     e.preventDefault();
     const isvalid = this.validate();
     if (isvalid) {
-      console.log(this.state);
-      var history = this.props.history;
-      const user = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.setState(intialState);
+      this.login();
+      //this.setState(intialState);
+      this.setState({ login: true });
     }
+    var history = this.props.history;
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
 
     /*  firebase
      .auth()
@@ -156,11 +162,11 @@ class Login extends Component {
   validate = () => {
     let emailerror = "";
     let passworderror = "";
-    if (!this.state.email.includes("@") && !this.state.email.includes(".")) {
+    if (!this.state.email.includes("@") || !this.state.email.includes(".")) {
       emailerror = "Invalid email";
     }
-    if (this.state.password.length < 3) {
-      passworderror = "Password should contain atleast 3 letters";
+    if (this.state.password.length < 6) {
+      passworderror = "Password should contains atleast 6 letters";
     }
     if (emailerror || passworderror) {
       this.setState({ emailerror, passworderror });
@@ -170,8 +176,8 @@ class Login extends Component {
     return true;
   };
   render() {
-    console.log("state of modal: " + this.props.isopen);
-    console.log("New state: " + this.state.modalOpen);
+    //console.log("state of modal: " + this.props.isopen);
+    //console.log("New state: " + this.state.modalOpen);
     const getModalStyle = () => {
       const top = 50;
       const left = 50;
@@ -269,21 +275,17 @@ class Login extends Component {
                   </div>
                 </Modal>
               </Typography>
-              <Link to="/dashboard" className={classes.links}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  className={classes.submit}
-                  onClick={() => {
-                    this.setState({
-                      modalOpen: false
-                    });
-                  }}
-                >
-                  Sign in
-                </Button>
-              </Link>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                className={classes.submit}
+                onClick={this.onSubmit}
+              >
+                Sign in
+              </Button>
+
               {
                 // <Typography>
                 //   Create an account?  &nbsp;<Link to="/register">Signup</Link>
@@ -321,4 +323,4 @@ class Login extends Component {
 Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
-export default withStyles(styles)(Login);
+export default withRouter(withStyles(styles)(Login));

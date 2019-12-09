@@ -13,7 +13,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import { message } from "antd";
 import { connect } from "react-redux";
@@ -84,43 +84,34 @@ class Register extends React.Component {
     this.state = intialState;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    if (this.props.is_logged_in) {
-      let path = "/";
-      this.props.history.push(path);
-      message.success("You are already logged in");
+    this.onRegister = this.onRegister.bind(this);
+  }
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+  async onRegister() {
+    try {
+      await firebase.register(
+        this.state.first_name + this.state.last_name,
+        this.state.email,
+        this.state.password
+      );
+      this.props.history.replace("/dashboard");
+    } catch (error) {
+      alert(error.message);
+      this.setState(intialState);
     }
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
   onSubmit(e) {
     let thisContext = this;
 
     e.preventDefault();
     const isvalid = this.validate();
     if (isvalid) {
-      console.log(this.state);
-      this.setState(intialState);
+      this.onRegister();
     }
-    const newUser = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      email: this.state.email,
-      password: this.state.password,
-      confirmpassword: this.state.confirmpassword,
-      is_email_verify: true
-    };
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        this.setState({ error: error });
-      });
   }
   validate = () => {
     let firstnameError = "";
@@ -178,14 +169,15 @@ class Register extends React.Component {
         <main className={classes.main}>
           <CssBaseline />
           <Paper className={classes.paper}>
+            {" "}
             {
               // <Avatar className={classes.avatar}>
               //   <PersonPinIcon />
               // </Avatar>
-            }
+            }{" "}
             <form className={classes.form}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="first_name">First Name</InputLabel>
+                <InputLabel htmlFor="first_name"> First Name </InputLabel>{" "}
                 <Input
                   type="text"
                   id="first_name"
@@ -195,12 +187,13 @@ class Register extends React.Component {
                   autoComplete="fname"
                   autoFocus
                 />
-              </FormControl>
+              </FormControl>{" "}
               <div style={{ color: "red", fontSize: 12 }}>
-                {this.state.firstnameError}
-              </div>
+                {" "}
+                {this.state.firstnameError}{" "}
+              </div>{" "}
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="last_name">Last Name</InputLabel>
+                <InputLabel htmlFor="last_name"> Last Name </InputLabel>{" "}
                 <Input
                   id="last_name"
                   name="last_name"
@@ -209,12 +202,13 @@ class Register extends React.Component {
                   onChange={this.onChange}
                   autoComplete="lname"
                 />
-              </FormControl>
+              </FormControl>{" "}
               <div style={{ color: "red", fontSize: 12 }}>
-                {this.state.lastnameError}
-              </div>
+                {" "}
+                {this.state.lastnameError}{" "}
+              </div>{" "}
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
+                <InputLabel htmlFor="email"> Email Address </InputLabel>{" "}
                 <Input
                   id="email"
                   type="email"
@@ -223,12 +217,13 @@ class Register extends React.Component {
                   onChange={this.onChange}
                   autoComplete="email"
                 />
-              </FormControl>
+              </FormControl>{" "}
               <div style={{ color: "red", fontSize: 12 }}>
-                {this.state.emailError}
-              </div>
+                {" "}
+                {this.state.emailError}{" "}
+              </div>{" "}
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
+                <InputLabel htmlFor="password"> Password </InputLabel>{" "}
                 <Input
                   name="password"
                   type="password"
@@ -237,14 +232,15 @@ class Register extends React.Component {
                   onChange={this.onChange}
                   autoComplete="current-password"
                 />
-              </FormControl>
+              </FormControl>{" "}
               <div style={{ color: "red", fontSize: 12 }}>
-                {this.state.passwordError}
-              </div>
+                {" "}
+                {this.state.passwordError}{" "}
+              </div>{" "}
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="confirmpassword">
-                  Confirm Password
-                </InputLabel>
+                  Confirm Password{" "}
+                </InputLabel>{" "}
                 <Input
                   name="confirmpassword"
                   type="password"
@@ -253,10 +249,11 @@ class Register extends React.Component {
                   onChange={this.onChange}
                   autoComplete="confirm-password"
                 />
-              </FormControl>
+              </FormControl>{" "}
               <div style={{ color: "red", fontSize: 12 }}>
-                {this.state.confirmpasswordError}
-              </div>
+                {" "}
+                {this.state.confirmpasswordError}{" "}
+              </div>{" "}
               <Button
                 type="submit"
                 fullWidth
@@ -264,10 +261,10 @@ class Register extends React.Component {
                 className={classes.submit}
                 onClick={this.onSubmit}
               >
-                SIGN UP
-              </Button>
+                SIGN UP{" "}
+              </Button>{" "}
               <br />
-              <br />
+              <br />{" "}
               {
                 // <div>
                 // <Button
@@ -290,10 +287,10 @@ class Register extends React.Component {
                 // <Typography >
                 //   Already have an account? &nbsp;<Link to="/login">Login</Link>
                 // </Typography>
-              }
-            </form>
-          </Paper>
-        </main>
+              }{" "}
+            </form>{" "}
+          </Paper>{" "}
+        </main>{" "}
         <br />
         <br />
       </Grid>
@@ -305,4 +302,4 @@ Register.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Register);
+export default withRouter(withStyles(styles)(Register));
